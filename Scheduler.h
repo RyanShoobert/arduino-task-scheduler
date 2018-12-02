@@ -29,6 +29,10 @@ public:
 	//Scheduler settings
 	void SetMaxTasks(unsigned short numTasks);
 
+	//Scheduler commands
+	bool Start();
+	bool Stop();
+
 	//Task functions
 	void AddTask(void* t);
 //-------------------------------------------------------------------------------
@@ -39,6 +43,8 @@ private:
 
 	char ID_Counter;
 	char AutoAssign();
+
+	void Run();
 };
 
 #endif /* SCHEDULER_H */

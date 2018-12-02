@@ -40,6 +40,20 @@ void Scheduler::AddTask(void* t) {
 /**
  * TODO Comment me
  */
+bool Scheduler::Start() {
+	return false;
+}
+
+/**
+ * TODO Comment me
+ */
+bool Scheduler::Stop() {
+	return false;
+}
+
+/**
+ * TODO Comment me
+ */
 char Scheduler::AutoAssign() {
 	return ID_Counter++;
 }
@@ -50,6 +64,13 @@ void Scheduler::SetMaxTasks(unsigned short numTasks) {
 	//TODO introduce some reallocation here to increase size of
 	//taskList and form an arraylist-like structure
 	realloc(taskList, (MAX_TASKS * sizeof(Task)));
+}
+
+/**
+ * TODO Comment me
+ */
+void Scheduler::Run() {
+
 }
 
 /**
