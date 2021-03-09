@@ -8,12 +8,27 @@
 
 #include "Scheduler.h"
 
-Task taskList[0];
-
-Scheduler::Scheduler() {
-    taskList[MAX_TASKS];
+void Start() {
+    //when interupt a not raised run tasks
 }
 
-Scheduler::~Scheduler() {
-    delete(taskList);
+void Stop() {
+}
+
+bool Scheduler::AddTask(void* function) {
+    if (function == nullptr)
+    {
+        return false;
+    }
+
+    this->taskHandler.AddTask(function);
+    return true;
+}
+
+bool Scheduler::RemoveTask(void* function) {
+    return true;
+}
+
+void RunTask(Task task) {
+    //run task until interupt b is raised
 }

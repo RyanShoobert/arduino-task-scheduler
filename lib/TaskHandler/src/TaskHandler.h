@@ -25,12 +25,7 @@ class TaskHandler
 {
 private:
     bool ValidateTask(Task function);
-    bool ValidateCounter(short newValue);
-
     short FindSpace(short* index);
-
-    Task taskList[MAX_TASKS];
-    short counter;
 public:
     TaskHandler();
     ~TaskHandler();
@@ -41,12 +36,10 @@ public:
 
 TaskHandler::TaskHandler()
 {
-    counter = 0;
 }
 
 TaskHandler::~TaskHandler()
 {
-    delete taskList;
 }
 
 #endif
