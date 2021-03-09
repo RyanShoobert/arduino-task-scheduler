@@ -8,7 +8,6 @@
 
 #ifndef SCHEDULER
 #define SCHEDULER
-#define MAX_TASKS 3
 
 class Scheduler 
 {
@@ -16,13 +15,11 @@ private:
     /* data */
 
 public:
-    Scheduler();
+    Scheduler(/* TaskHandler taskHandler */);
     ~Scheduler();
 
     bool Start();
     bool Stop();
-    void AddTask(Task task);
-    void RemoveTask(Task task);
 };
 
 #endif

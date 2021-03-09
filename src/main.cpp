@@ -7,3 +7,11 @@ void setup() {
 void loop() {
   
 }
+
+void taskOne() {
+
+}
+
+void taskTwo() {
+    
+}
