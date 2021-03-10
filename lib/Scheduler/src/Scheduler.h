@@ -2,27 +2,28 @@
 // ©2021 Ryan Shoobert, all rights reserved
 //=================================================================
 // Author: Ryan Shoobert
-// Created: 08 March, 2021; Modified: 08 March, 2021
+// Created: 08 March, 2021; Modified: 10 March, 2021
 // Filename: Scheduler.h
 //=================================================================
 
 #ifndef SCHEDULER
 #define SCHEDULER
-#define MAX_TASKS 3
+
+#include "TaskHandler.h"
 
 class Scheduler 
 {
 private:
-    /* data */
+    TaskHandler handler;
 
 public:
-    Scheduler();
+    Scheduler(TaskHandler* taskHandler);
     ~Scheduler();
 
-    bool Start();
-    bool Stop();
-    void AddTask(Task task);
-    void RemoveTask(Task task);
+    void Start();
+    void Stop();
+    bool AddTask(void (*function)());
+    bool RemoveTask(void (*function)());
 };
 
 #endif
