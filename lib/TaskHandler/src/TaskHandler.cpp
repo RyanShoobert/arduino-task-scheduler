@@ -40,11 +40,11 @@ void TaskHandler::AddTask(void (*task)()) {
     {
         return;
     }
-
+    
     taskList[counter] = Task{
         counter,
         Ready,
-        nullptr
+        &*task
     };
 }
 
