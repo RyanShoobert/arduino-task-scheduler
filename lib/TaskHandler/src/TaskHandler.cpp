@@ -12,7 +12,7 @@
 Task taskList[MAX_TASKS];
 
 
-TaskHandler::TaskHandler(/* args */)
+TaskHandler::TaskHandler()
 {
 }
 
@@ -44,19 +44,28 @@ void TaskHandler::AddTask(void (*task)()) {
     taskList[counter] = Task{
         counter,
         Ready,
-        &*task
+        &task
     };
 }
 
-//!!=====================Not needed yet!!=====================
-// bool ValidateTask(Task task) {
-//     if (task.taskState == Running)
-//     {
-//         return false;
-//     }
+bool ValidateTask(Task task) {
+    if (task.taskState == Running)
+    {
+        return false;
+    }
 
-//     return true;
-// }
+    return true;
+}
+
+void TaskHandler::RemoveTask(Task task) {
+    bool isValid = ValidateTask(task);
+    if (!isValid)
+    {
+        return;
+    }
+
+    taskList[task.taskID] = Task{};
+}
 
 TaskHandler::~TaskHandler()
 {

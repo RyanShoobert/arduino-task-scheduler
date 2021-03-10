@@ -30,7 +30,7 @@ void setup() {
     taskHandler.AddTask(taskOne);
     taskHandler.AddTask(taskTwo);
 
-    //scheduler->Start();
+    //scheduler.Start();
 }
 
 void loop() {
