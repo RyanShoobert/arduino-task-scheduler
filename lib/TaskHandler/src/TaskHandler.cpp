@@ -2,7 +2,7 @@
 // ©2021 Ryan Shoobert, all rights reserved
 //=================================================================
 // Author: Ryan Shoobert
-// Created: 09 March, 2021; Modified: 09 March, 2021
+// Created: 09 March, 2021; Modified: 10 March, 2021
 // Filename: TaskHandler.cpp
 //=================================================================
 
@@ -11,20 +11,9 @@
 
 Task taskList[MAX_TASKS];
 
-void TaskHandler::AddTask(void* function) {
-    short counter = -1;
 
-    bool spaceFound = this->FindSpace(&counter);
-    if (!spaceFound)
-    {
-        return;
-    }
-
-    taskList[counter] = Task{
-        counter,
-        Ready,
-        function
-    };
+TaskHandler::TaskHandler(/* args */)
+{
 }
 
 bool FindSpace(short* index) {  
@@ -43,6 +32,22 @@ bool FindSpace(short* index) {
     return false;
 }
 
+void TaskHandler::AddTask(void (*task)()) {
+    short counter = -1;
+
+    bool spaceFound = FindSpace(&counter);
+    if (!spaceFound)
+    {
+        return;
+    }
+
+    taskList[counter] = Task{
+        counter,
+        Ready,
+        nullptr
+    };
+}
+
 //!!=====================Not needed yet!!=====================
 // bool ValidateTask(Task task) {
 //     if (task.taskState == Running)
@@ -53,3 +58,6 @@ bool FindSpace(short* index) {
 //     return true;
 // }
 
+TaskHandler::~TaskHandler()
+{
+}

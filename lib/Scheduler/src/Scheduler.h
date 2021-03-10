@@ -2,7 +2,7 @@
 // ©2021 Ryan Shoobert, all rights reserved
 //=================================================================
 // Author: Ryan Shoobert
-// Created: 08 March, 2021; Modified: 09 March, 2021
+// Created: 08 March, 2021; Modified: 10 March, 2021
 // Filename: Scheduler.h
 //=================================================================
 
@@ -14,9 +14,7 @@
 class Scheduler 
 {
 private:
-    TaskHandler taskHandler;
-
-    void RunTask(Task task);
+    TaskHandler handler;
 
 public:
     Scheduler(TaskHandler* taskHandler);
@@ -24,16 +22,8 @@ public:
 
     void Start();
     void Stop();
-    bool AddTask(void* task);
-    bool RemoveTask(void* task);
+    bool AddTask(void (*function)());
+    bool RemoveTask(void (*function)());
 };
-
-Scheduler::Scheduler(TaskHandler* taskHandler) {
-    this->taskHandler = *taskHandler;
-}
-
-Scheduler::~Scheduler() {
-    delete(&taskHandler);
-}
 
 #endif

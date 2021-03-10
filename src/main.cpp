@@ -7,18 +7,7 @@
 //=================================================================
 
 #include <Arduino.h>
-#include "TaskHandler.h"
 #include "Scheduler.h"
-
-void setup() {
-    TaskHandler* taskHandler = new TaskHandler();
-    Scheduler* scheduler = new Scheduler(taskHandler);
-
-    //scheduler->Start();
-}
-
-void loop() {
-}
 
 void taskOne() {
     for (short i = 0; i < 10; i++)
@@ -32,4 +21,17 @@ void taskTwo() {
     {
         Serial.println("Task2 count: " + i);
     } 
+}
+
+void setup() {
+    TaskHandler taskHandler;
+    Scheduler scheduler(&taskHandler);
+
+    taskHandler.AddTask(taskOne);
+    taskHandler.AddTask(taskTwo);
+
+    //scheduler->Start();
+}
+
+void loop() {
 }
