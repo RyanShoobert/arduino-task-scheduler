@@ -13,6 +13,7 @@ Task taskList[MAX_TASKS];
 
 void TaskHandler::AddTask(void* function) {
     short counter = -1;
+
     bool spaceFound = this->FindSpace(&counter);
     if (!spaceFound)
     {
@@ -31,9 +32,7 @@ bool FindSpace(short* index) {
 
     for (short i = 0; i < MAX_TASKS; i++)
     {
-        Task t = taskList[i];
-
-        if (t.taskState == Finished)
+        if (taskList[i].taskState == Finished || taskList[i].taskState == Undefined)
         {
             Serial.write("Space found at:" + *index);
             *index = i;

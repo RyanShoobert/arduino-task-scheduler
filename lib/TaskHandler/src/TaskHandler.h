@@ -11,7 +11,7 @@
 #define MAX_TASKS 3
 
 enum TaskState {
-    Stopped, Running, Ready, Finished, Failed
+    Undefined, Stopped, Running, Ready, Finished, Failed
 };
 
 struct Task
