@@ -23,8 +23,8 @@ bool FindSpace(short* index) {
     {
         if (taskList[i].taskState == Finished || taskList[i].taskState == Undefined)
         {
-            Serial.write("Space found at:" + *index);
-            *index = i;
+           *index = i;
+
             return true;
         }
     }    
