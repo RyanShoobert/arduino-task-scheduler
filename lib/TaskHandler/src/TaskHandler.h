@@ -2,7 +2,7 @@
 // ©2021 Ryan Shoobert, all rights reserved
 //=================================================================
 // Author: Ryan Shoobert
-// Created: 09 March, 2021; Modified: 10 March, 2021
+// Created: 09 March, 2021; Modified: 15 March, 2021
 // Filename: TaskHandler.cpp
 //=================================================================
 
@@ -34,6 +34,9 @@ public:
 
     void AddTask(void (*task)(), String friendlyName);
     void RemoveTask(Task task);
+
+    //hacky solution
+    Task* GetTasks(Task tasks[]);
 };
 
 #endif

@@ -2,7 +2,7 @@
 // ©2021 Ryan Shoobert, all rights reserved
 //=================================================================
 // Author: Ryan Shoobert
-// Created: 09 March, 2021; Modified: 10 March, 2021
+// Created: 09 March, 2021; Modified: 15 March, 2021
 // Filename: main.cpp
 //=================================================================
 
@@ -31,7 +31,8 @@ void setup() {
     taskHandler.AddTask(taskOne, "Task One");
     taskHandler.AddTask(taskTwo, "Task Two");
 
-    //scheduler.Start();
+    scheduler.Start();
+
 }
 
 void loop() {

@@ -2,7 +2,7 @@
 // ©2021 Ryan Shoobert, all rights reserved
 //=================================================================
 // Author: Ryan Shoobert
-// Created: 09 March, 2021; Modified: 10 March, 2021
+// Created: 09 March, 2021; Modified: 15 March, 2021
 // Filename: TaskHandler.cpp
 //=================================================================
 
@@ -42,6 +42,10 @@ void TaskHandler::AddTask(void (*task)(), String freindlyName) {
         Ready,
         &task
     };
+}
+
+Task* TaskHandler::GetTasks(Task tasks[]) {
+    return &taskList[0];    
 }
 
 bool ValidateTask(Task task) {

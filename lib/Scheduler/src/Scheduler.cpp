@@ -2,23 +2,58 @@
 // ©2021 Ryan Shoobert, all rights reserved
 //=================================================================
 // Author: Ryan Shoobert
-// Created: 08 March, 2021; Modified: 10 March, 2021
+// Created: 08 March, 2021; Modified: 15 March, 2021
 // Filename: Scheduler.cpp
 //=================================================================
 
+#define LED_PIN 13
+#define SECONDS_TO_WAIT 10
+
 #include "Scheduler.h"
+
+int millisecondCounter = 0;
+
+void ContextSwitch();
+
+//interrupt from timer which is raised every millisecond
+//TODO look at configuring one of the other times to a longer interval to get remove need for if statement
+// SIGNAL(TIMER0_COMPA_vect) {
+//     millisecondCounter++;
+    
+//     if ((millisecondCounter % (SECONDS_TO_WAIT * 1000)) == 0)
+//     {
+//         ContextSwitch();
+//         millisecondCounter = 0;
+//     }
+    
+// }
 
 Scheduler::Scheduler(TaskHandler* taskHandler) {
     handler = *taskHandler;
-}
 
-void RunTask(Task task) {
-    //run task until interupt b is raised
+    OCR0A = 0xAF;
+    TIMSK0 |= _BV(OCIE0A);
 }
 
 void Scheduler::Start() {
-    //when interupt a not raised run tasks
+    Task tasks[MAX_TASKS];
+    tasks[0] = *handler.GetTasks(tasks);
 
+    // for (Task t : tasks)
+    // {
+        Serial.begin(9600);
+        Serial.print(tasks[1].name[0]);
+        Serial.end();
+        //void* pc = t.taskProgramCounter;
+        //(pc); //call to task from current position
+    //}    
+}
+
+void ContextSwitch() {
+    //asm for moving bits around
+    asm volatile(
+        "NOP                   \n"
+    );
 }
 
 void Scheduler::Stop() {
@@ -41,5 +76,4 @@ bool Scheduler::RemoveTask(String friendlyName) {
 }
 
 Scheduler::~Scheduler() {
-
 }
