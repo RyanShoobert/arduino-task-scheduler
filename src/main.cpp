@@ -6,13 +6,13 @@
 // Filename: main.cpp
 //=================================================================
 
-#include <Arduino.h>
 #include "Scheduler.h"
 
 void taskOne() {
     for (short i = 0; i < 10; i++)
     {
         Serial.println("Task1 count: " + i);
+        delay(1000);
     }    
 }
 
@@ -20,6 +20,7 @@ void taskTwo() {
     for (short i = 0; i < 100; i++)
     {
         Serial.println("Task2 count: " + i);
+        delay(1000);
     } 
 }
 
@@ -27,8 +28,8 @@ void setup() {
     TaskHandler taskHandler;
     Scheduler scheduler(&taskHandler);
 
-    taskHandler.AddTask(taskOne);
-    taskHandler.AddTask(taskTwo);
+    taskHandler.AddTask(taskOne, "Task One");
+    taskHandler.AddTask(taskTwo, "Task Two");
 
     //scheduler.Start();
 }

@@ -7,18 +7,14 @@
 //=================================================================
 
 #include "TaskHandler.h"
-#include <Arduino.h>
 
 Task taskList[MAX_TASKS];
-
 
 TaskHandler::TaskHandler()
 {
 }
 
 bool FindSpace(short* index) {  
-    Serial.write(*index);
-
     for (short i = 0; i < MAX_TASKS; i++)
     {
         if (taskList[i].taskState == Finished || taskList[i].taskState == Undefined)
@@ -32,7 +28,7 @@ bool FindSpace(short* index) {
     return false;
 }
 
-void TaskHandler::AddTask(void (*task)()) {
+void TaskHandler::AddTask(void (*task)(), String freindlyName) {
     short counter = -1;
 
     bool spaceFound = FindSpace(&counter);

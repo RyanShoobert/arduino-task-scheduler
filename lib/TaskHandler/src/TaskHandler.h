@@ -10,6 +10,8 @@
 #define TASK_HANDLER
 #define MAX_TASKS 3
 
+#include "Arduino.h"
+
 enum TaskState {
     Undefined, Stopped, Running, Ready, Finished, Failed
 };
@@ -19,6 +21,7 @@ struct Task
     short taskID;
     TaskState taskState;
     void* taskProgramCounter;
+    String name;
 };
 
 class TaskHandler
@@ -29,7 +32,7 @@ public:
     TaskHandler();
     ~TaskHandler();
 
-    void AddTask(void (*task)());
+    void AddTask(void (*task)(), String friendlyName);
     void RemoveTask(Task task);
 };
 

@@ -18,22 +18,25 @@ void RunTask(Task task) {
 
 void Scheduler::Start() {
     //when interupt a not raised run tasks
+
 }
 
 void Scheduler::Stop() {
 }
 
-bool Scheduler::AddTask(void (*function)()) {
+bool Scheduler::AddTask(void (*function)(), String friendlyName) {
     if (function == nullptr)
     {
         return false;
     }
 
-    handler.AddTask(function);
+    handler.AddTask(function, friendlyName);
     return true;
 }
 
-bool Scheduler::RemoveTask(void (*function)()) {
+bool Scheduler::RemoveTask(String friendlyName) {
+    //TODO implement logic later to get correct task    
+    handler.RemoveTask(Task{1, Ready, nullptr, friendlyName});
     return true;
 }
 

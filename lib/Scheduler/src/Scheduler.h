@@ -22,8 +22,8 @@ public:
 
     void Start();
     void Stop();
-    bool AddTask(void (*function)());
-    bool RemoveTask(void (*function)());
+    bool AddTask(void (*function)(), String friendlyName);
+    bool RemoveTask(String friendlyName);
 };
 
 #endif
